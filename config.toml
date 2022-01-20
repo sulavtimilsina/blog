@@ -1,0 +1,128 @@
+baseURL = "/"
+title = "Sulav Timilsina"
+theme = "hugo-coder"
+languageCode = "en"
+defaultContentLanguage = "en"
+paginate = 20
+pygmentsStyle = "bw"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+enableEmoji = true
+# Enable Disqus comments
+# disqusShortname = "yourdiscussshortname"
+
+[params]
+author = "Sulav Timilsina"
+description = "Sulav's personal blogging website"
+keywords = "blog,developer,personal"
+info = ["Machine Learning Developer", "Reader and Learner"]
+avatarURL = "images/avatar.jpg"
+dateFormat = "January 2, 2006"
+since = 2019
+rtl = false
+colorScheme = "auto"
+# Hide the toggle button, along with the associated vertical divider
+hideColorSchemeToggle = false
+# Series see also post count
+maxSeeAlsoItems = 5
+# Custom CSS
+customCSS = []
+# Custom SCSS, file path is relative to Hugo's asset folder (default: {your project root}/assets)
+customSCSS = []
+# Custom JS
+customJS = []
+
+
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+author = "authors"
+
+[[params.social]]
+name = "Github"
+icon = "fa fa-2x fa-github"
+weight = 1
+url = "https://github.com/sulavtimilsina"
+
+[[params.social]]
+name = "Gitlab"
+icon = "fa fa-2x fa-gitlab"
+weight = 2
+url = "https://gitlab.com/sulavtimilsina"
+
+[[params.social]]
+name = "Twitter"
+icon = "fa fa-2x fa-twitter"
+weight = 3
+url = "https://twitter.com/Durlav98"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "fa fa-2x fa-linkedin"
+weight = 4
+url = "https://www.linkedin.com/in/sulav-timilsina-715873124/"
+
+[[params.social]]
+name = "Medium"
+icon = "fa fa-2x fa-medium"
+weight = 5
+url = "https://medium.com/@sulav.timilsina1999"
+
+[[params.social]]
+name = "gmail"
+icon = "fa fa-envelope fa-2x"
+weight = 6
+url = "mailto:sulav.timilsina1999@gmail.com"
+#rel = "alternate"
+#type = "application/rss+xml"
+
+[languages.en]
+languageName = ":uk:"
+
+[[languages.en.menu.main]]
+name = "About"
+weight = 1
+url = "about/"
+
+[[languages.en.menu.main]]
+name = "Blog"
+weight = 2
+url = "posts/"
+
+[[languages.en.menu.main]]
+name = "Projects"
+weight = 3
+url = "projects/"
+
+#[[languages.en.menu.main]]
+#name = "Contact me"
+#weight = 5
+#url = "contact/"
+
+[languages.ne]
+languageName = ":nepal:"
+title = "सुलभ तिमिल्सिना"
+
+[languages.ne.params]
+author = "सुलभ तिमिल्सिना"
+info = "Full Stack DevOps e Mágico"
+description = "Sítio pessoal de João Ninguém"
+keywords = "blog,desenvolvedor,pessoal"
+
+[[languages.ne.menu.main]]
+name = "बारेमा"
+weight = 1
+url = "about/"
+
+[[languages.ne.menu.main]]
+name = "ब्लग"
+weight = 2
+url = "posts/"
+
+#[[languages.ne.menu.main]]
+#name = "Projetos"
+#weight = 3
+#url = "projects/"
+
