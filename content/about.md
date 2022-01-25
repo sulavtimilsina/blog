@@ -1,25 +1,11 @@
-+++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
-aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
++++ 
+title = "About Me" 
+slug = "about" 
 +++
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+Hi, I an Sulav. I am a undergraduate student of computer engineering at the [Institue of Engineering, ](https://ioe.edu.np)[Paschimanchal Campus](https://www.ioepas.edu.np/). I have always been a keen observer of science and technology.
+    
+Since past few  years, I haven been focusing my self on learning and acquiring skills as a ML Developer. Besides I have an enthusiasm and an expertise on Android/Web Development with application of Machine Learning.
 
-Hugo makes use of a variety of open source projects including:
-
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
-
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
-
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
-
-Websites built with Hugo are extremely fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+I am interested in Image Processing, Natural Language Processing, and Generative Modeling.
+My ongoing final year dissertation is about Nepali Language Modeling. 

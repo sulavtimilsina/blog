@@ -9,27 +9,22 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableEmoji = true
 # Enable Disqus comments
-# disqusShortname = "yourdiscussshortname"
+disqusShortname = "sulav-blog"  
 
 [params]
 author = "Sulav Timilsina"
 description = "Sulav's personal blogging website"
 keywords = "blog,developer,personal"
-info = ["Machine Learning Developer", "Reader and Learner"]
+info = ["Machine Learning & Deep Learning Enthusiast", "Reader and Learner"]
 avatarURL = "images/avatar.jpg"
 dateFormat = "January 2, 2006"
 since = 2019
 rtl = false
 colorScheme = "auto"
-# Hide the toggle button, along with the associated vertical divider
 hideColorSchemeToggle = false
-# Series see also post count
 maxSeeAlsoItems = 5
-# Custom CSS
 customCSS = []
-# Custom SCSS, file path is relative to Hugo's asset folder (default: {your project root}/assets)
 customSCSS = []
-# Custom JS
 customJS = []
 
 
@@ -96,10 +91,10 @@ name = "Projects"
 weight = 3
 url = "projects/"
 
-#[[languages.en.menu.main]]
-#name = "Contact me"
-#weight = 5
-#url = "contact/"
+[[languages.en.menu.main]]
+name = "Resume"
+weight = 4
+url = "resume/resume.pdf"
 
 [languages.ne]
 languageName = ":nepal:"
@@ -107,9 +102,9 @@ title = "सुलभ तिमिल्सिना"
 
 [languages.ne.params]
 author = "सुलभ तिमिल्सिना"
-info = "Full Stack DevOps e Mágico"
-description = "Sítio pessoal de João Ninguém"
-keywords = "blog,desenvolvedor,pessoal"
+info = "बुज्दै , भोग्दै र सिक्दै!"
+description = ""
+keywords = ""
 
 [[languages.ne.menu.main]]
 name = "बारेमा"
@@ -125,4 +120,3 @@ url = "posts/"
 #name = "Projetos"
 #weight = 3
 #url = "projects/"
-
