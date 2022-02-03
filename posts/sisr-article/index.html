@@ -157,18 +157,8 @@ Generator Loss
 </a>
 </h3>
 <p>The generator loss is the sum of MSE, perceptual loss +adversarial loss</p>
-<h5 id=_isubgsub--mseperceptual-loss-adversarial-loss_>
-<em>IG = MSE+Perceptual Loss +Adversarial loss</em>
-<a class=heading-link href=#_isubgsub--mseperceptual-loss-adversarial-loss_>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
-<h5 id=_isubgsub-isubmsesubisubpsub-isubgasub_>
-<em>IG= IMSE+Ip+ IGA</em>
-<a class=heading-link href=#_isubgsub-isubmsesubisubpsub-isubgasub_>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>lG = MSE+Perceptual Loss +Adversarial loss</em></p>
+<p><em>lG= lMSE+lp+ lGA</em></p>
 <h3 id=mean-square-errormse>
 Mean Square Error(MSE)
 <a class=heading-link href=#mean-square-errormse>
@@ -176,12 +166,7 @@ Mean Square Error(MSE)
 </a>
 </h3>
 <p>As the most common optimization objective for SISR, the pixelwise MSE loss is calculated as:</p>
-<h5 id=lsubmsesub--gsubθsubisublrsub---isubhrsubsub2subsup2sup>
-lMSE = ||GΘ(ILR) - IHR||22,
-<a class=heading-link href=#lsubmsesub--gsub%ce%b8subisublrsub---isubhrsubsub2subsup2sup>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>lMSE = ||GΘ(ILR) - IHR||22</em>,</p>
 <p>where the parameter of the generator is denoted by ; the generated image, namely ISR,is denoted by GΘ(ILR); and the ground truth is denoted by IHR . Although models with MSE loss favor a high PSNR value, the generated results tend to be perceptually unsatisfying with overly smooth textures. Despite the aforementioned shortcomings, this loss term is still kept because MSE has clear physical meaning and helps to maintain color stability.</p>
 <h1 id=mse-code-here>
 mse code here
@@ -196,12 +181,7 @@ Perceptual Loss
 </a>
 </h3>
 <p>To compensate for the shortcomings of MSE loss and allow the loss function to better measure semantic and perceptual differences between images, we define and optimize a perceptual loss based on high-level features extracted from a pretrained network. The rationality of this loss term lies in that the pretrained network for classification originally has learned to encode the semantic and perceptual information that may be measured in the loss function. To enhance the performance of the perceptual loss, a 19-layer VGG network is used. The perceptual loss is actually the Euclidean distance between feature representations, which is defined as</p>
-<h5 id=lsubpsub--𝜙gsubθsubisublrsub---𝜙isubhrsubsub2subsup2sup>
-lp = ||𝜙(GΘ(ILR)) - 𝜙(IHR)||22,
-<a class=heading-link href=#lsubpsub--%f0%9d%9c%99gsub%ce%b8subisublrsub---%f0%9d%9c%99isubhrsubsub2subsup2sup>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>lp = ||𝜙(GΘ(ILR)) - 𝜙(IHR)||22</em>,</p>
 <p>where 𝜙 refers to the 19-layer VGG network. With this loss term, ISR and IHR are encouraged to have similar feature representations rather than to exactly match with each other in a pixel wise manner.</p>
 <h1 id=vgg-code-here>
 vgg code here
@@ -223,24 +203,14 @@ Generator Loss
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h5 id=_isubgasub-𝔼dgsubθsubisublrsub_>
-<em>IGA=-𝔼[D(GΘ(ILR)]</em>
-<a class=heading-link href=#_isubgasub-%f0%9d%94%bcdgsub%ce%b8subisublrsub_>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>lGA=-𝔼[D(GΘ(ILR)]</em></p>
 <h3 id=discriminator-loss>
 Discriminator Loss
 <a class=heading-link href=#discriminator-loss>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h3>
-<h5 id=_isubdasub𝔼dgsubθsubisublrsub-𝔼disubhrsub--λ𝔼subhatisubdhati-1sub2sub-1sup2sup_>
-<em>IDA=𝔼[D(GΘ(ILR)]-𝔼[D(IHR)] + λ𝔼(||▽hat{I}D(hat{I})-1||2-1)2</em>
-<a class=heading-link href=#_isubdasub%f0%9d%94%bcdgsub%ce%b8subisublrsub-%f0%9d%94%bcdisubhrsub--%ce%bb%f0%9d%94%bcsubhatisubdhati-1sub2sub-1sup2sup_>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>lDA=𝔼[D(GΘ(ILR)]-𝔼[D(IHR)] + λ𝔼(||▽hat{I}D(hat{I})-1||2-1)2</em></p>
 <p><img src=/images/work_flow.png#center alt="workflow diagram"></p>
 <p>Normally, the output of the classifier i.e. discriminator in this case is kept between 0-1 using a sigmoid function in the last layer, where if discriminator prediction 0 for an image then the image is SR likewise if the prediction is 1 then it is an HR image. Here the discriminator is trained using WGAN-GP approach <a href=https://sulavtimilsina.github.io/posts/wgan-gp/>(described here)</a>, hence the output is not bounded between 0-1 instead the discriminator will try to maximize the distance between the prediction of SR image and HR image and generator will try to minimize it. Let&rsquo;s look at the loss of the generator ie. IGA and the loss of discriminator IDA .</p>
 <h3 id=understanding-discriminator-adversarial-loss>
@@ -250,23 +220,13 @@ UNDERSTANDING DISCRIMINATOR ADVERSARIAL LOSS
 </a>
 </h3>
 <p>(not considering the gradient penalty term for making it easier to understand)</p>
-<h5 id=_isubdasub𝔼dgsubθsubisublrsub-𝔼disubhrsub_>
-<em>IDA=𝔼[D(GΘ(ILR)]-𝔼[D(IHR)]</em>
-<a class=heading-link href=#_isubdasub%f0%9d%94%bcdgsub%ce%b8subisublrsub-%f0%9d%94%bcdisubhrsub_>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
-<p>(Note: IDA= 𝔼[D(IHR)]-𝔼[D(GΘ(ILR)] if the loss of the discriminator is in this form than the discriminator will try to maximize this equation and the generator will try to minimize the IGA).</p>
+<p><em>lDA=𝔼[D(GΘ(ILR)]-𝔼[D(IHR)]</em></p>
+<p>(Note: <em>lDA= 𝔼[D(IHR)]-𝔼[D(GΘ(ILR)]</em> if the loss of the discriminator is in this form than the discriminator will try to maximize this equation and the generator will try to minimize the IGA).</p>
 <p>Considering D(GΘ(ILR))= 5 and D(IHR) = 5 initially when the discriminator doesn’t have the ability to differentiate between them.</p>
-<p>Therefore the loss at the very beginning:</p>
-<h5 id=isubdasub5-5-0>
-IDA=5-5= 0,
-<a class=heading-link href=#isubdasub5-5-0>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
-<p>The discriminator wants to minimize the loss IDA, hence increasing the distance between
-D(GΘ(ILR))and D(IHR) . Suppose after the update of the gradient of the discriminator for the few step, the value of prediction becomes D(GΘ(ILR))=-2 and D(IHR) = 2 ,therefore discriminator is learning to know the difference between the LR image and the HR image, hence making the loss(IDA)= -4, Here the loss is minimized and the distance between the two predictions is maximized.</p>
+<p>Therefore the loss at the very beginning:
+<em>lDA=5-5= 0,</em></p>
+<p>The discriminator wants to minimize the loss lDA, hence increasing the distance between
+D(GΘ(ILR))and D(IHR) . Suppose after the update of the gradient of the discriminator for the few step, the value of prediction becomes D(GΘ(ILR))=-2 and D(IHR) = 2 ,therefore discriminator is learning to know the difference between the LR image and the HR image, hence making the loss(lDA)= -4, Here the loss is minimized and the distance between the two predictions is maximized.</p>
 <p><img src=/images/understanding_disc_adv_loss.png#center alt="discriminator adverserial loss"></p>
 <h1 id=code>
 code
@@ -281,39 +241,14 @@ UNDERSTANDING GENERATOR ADVERSARIAL LOSS
 </a>
 </h3>
 <p>Discriminator is trained for a few steps and then the update of the generator happens. Therefore the discriminator is kept a few steps ahead of the generator in terms of its learning. Let&rsquo;s consider the discriminator has been trained for the few steps and it predicted outputs are:</p>
-<h5 id=dgsubθsubisublrsub---2>
-D(GΘ(ILR)) = -2
-<a class=heading-link href=#dgsub%ce%b8subisublrsub---2>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
-<h5 id=disubhrsub--2>
-D(IHR) = 2
-<a class=heading-link href=#disubhrsub--2>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>D(GΘ(ILR)) = -2</em>
+<em>D(IHR) = 2</em></p>
 <p>The loss of the generator is:</p>
-<h5 id=_isubgasub---𝔼dgsubθsubisublrsub_>
-<em>IGA = -𝔼[D(GΘ(ILR)]</em>
-<a class=heading-link href=#_isubgasub---%f0%9d%94%bcdgsub%ce%b8subisublrsub_>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
-<p>Therefore,</p>
-<h5 id=isubgasub----2--2>
-IGA= -(-2) = 2
-<a class=heading-link href=#isubgasub----2--2>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
-<p>Generator wants to minimize IGA , which can only we achieved by increasing the value of D(GΘ(ILR)) hence ultimately reducing the distance between D(GΘ(ILR)) and D(IHR) ,hence making the SR image and HR image identical as:</p>
-<h5 id=isubgasub--large-positive-value--global-minima>
-IGA= -(large positive value) ≈ global minima
-<a class=heading-link href=#isubgasub--large-positive-value--global-minima>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h5>
+<p><em>lGA = -𝔼[D(GΘ(ILR)]</em></p>
+<p>Therefore,
+<em>lGA= -(-2) = 2</em></p>
+<p>Generator wants to minimize lGA , which can only we achieved by increasing the value of D(GΘ(ILR)) hence ultimately reducing the distance between D(GΘ(ILR)) and D(IHR) ,hence making the SR image and HR image identical as:</p>
+<p><em>lGA= -(large positive value) ≈ global minima</em></p>
 <p><img src=/images/understanding_gen_adv_loss.png#center alt="generator adverserial loss"></p>
 <h1 id=code-1>
 code
