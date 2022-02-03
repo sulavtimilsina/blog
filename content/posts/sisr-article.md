@@ -52,15 +52,15 @@ But to overcome the instability while training of original GAN, we use a variant
 
 The generator loss is the sum of MSE, perceptual loss +adversarial loss
 
-##### _I<sub>G</sub> = MSE+Perceptual Loss +Adversarial loss_
+_l<sub>G</sub> = MSE+Perceptual Loss +Adversarial loss_
 
-##### _I<sub>G</sub>= I<sub>MSE</sub>+I<sub>p</sub>+ I<sub>GA</sub>_
+_l<sub>G</sub>= l<sub>MSE</sub>+l<sub>p</sub>+ l<sub>GA</sub>_
 
 ### Mean Square Error(MSE)
 
 As the most common optimization objective for SISR, the pixelwise MSE loss is calculated as:
 
-##### l<sub>MSE</sub> = ||G<sub>Θ</sub>(I<sub>LR</sub>) - I<sub>HR</sub>||<sub>2</sub><sup>2</sup>,
+_l<sub>MSE</sub> = ||G<sub>Θ</sub>(I<sub>LR</sub>) - I<sub>HR</sub>||<sub>2</sub><sup>2</sup>_,
 
 where the parameter of the generator is denoted by ; the generated image, namely I<sub>SR</sub>,is denoted by G<sub>Θ</sub>(I<sub>LR</sub>); and the ground truth is denoted by I<sub>HR</sub> . Although models with MSE loss favor a high PSNR value, the generated results tend to be perceptually unsatisfying with overly smooth textures. Despite the aforementioned shortcomings, this loss term is still kept because MSE has clear physical meaning and helps to maintain color stability.
 
@@ -70,7 +70,7 @@ where the parameter of the generator is denoted by ; the generated image, namely
 ### Perceptual Loss
 To compensate for the shortcomings of MSE loss and allow the loss function to better measure semantic and perceptual differences between images, we define and optimize a perceptual loss based on high-level features extracted from a pretrained network. The rationality of this loss term lies in that the pretrained network for classification originally has learned to encode the semantic and perceptual information that may be measured in the loss function. To enhance the performance of the perceptual loss, a 19-layer VGG network is used. The perceptual loss is actually the Euclidean distance between feature representations, which is defined as
 
-##### l<sub>p</sub> = ||𝜙(G<sub>Θ</sub>(I<sub>LR</sub>)) - 𝜙(I<sub>HR</sub>)||<sub>2</sub><sup>2</sup>,
+_l<sub>p</sub> = ||𝜙(G<sub>Θ</sub>(I<sub>LR</sub>)) - 𝜙(I<sub>HR</sub>)||<sub>2</sub><sup>2</sup>_,
 
 where 𝜙  refers to the 19-layer VGG network. With this loss term, I<sub>SR</sub>  and I<sub>HR</sub> are encouraged to have similar feature representations rather than to exactly match with each other in a pixel wise manner.
 
@@ -82,11 +82,11 @@ To overcome the flaw of clipping , a new approach is applied called Gradient Pel
 
 ### Generator Loss
 
-##### _I<sub>GA</sub>=-𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]_
+_l<sub>GA</sub>=-𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]_
 
 ### Discriminator Loss
 
-##### _I<sub>DA</sub>=𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]-𝔼[D(I<sub>HR</sub>)] + λ𝔼(||▽<sub>hat{I}</sub>D(hat{I})-1||<sub>2</sub>-1)<sup>2</sup>_
+_l<sub>DA</sub>=𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]-𝔼[D(I<sub>HR</sub>)] + λ𝔼(||▽<sub>hat{I}</sub>D(hat{I})-1||<sub>2</sub>-1)<sup>2</sup>_
 
 ![workflow diagram](/images/work_flow.png#center)
 
@@ -96,17 +96,17 @@ Normally, the output of the classifier i.e. discriminator in this case is kept b
 ### UNDERSTANDING DISCRIMINATOR ADVERSARIAL LOSS 
 (not considering the gradient penalty term for making it easier to understand)
 
-##### _I<sub>DA</sub>=𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]-𝔼[D(I<sub>HR</sub>)]_
+_l<sub>DA</sub>=𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]-𝔼[D(I<sub>HR</sub>)]_
 
-(Note: I<sub>DA</sub>= 𝔼[D(I<sub>HR</sub>)]-𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)] if the loss of the discriminator is in this form than the discriminator will try to maximize this equation and the generator will try to minimize the I<sub>GA</sub>).
+(Note: _l<sub>DA</sub>= 𝔼[D(I<sub>HR</sub>)]-𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]_ if the loss of the discriminator is in this form than the discriminator will try to maximize this equation and the generator will try to minimize the I<sub>GA</sub>).
 
 Considering D(G<sub>Θ</sub>(I<sub>LR</sub>))= 5  and D(I<sub>HR</sub>) = 5 initially when the discriminator doesn’t have the ability to differentiate between them.
 
 Therefore the loss at the very beginning:
-##### I<sub>DA</sub>=5-5= 0, 
+_l<sub>DA</sub>=5-5= 0,_ 
 
-The discriminator wants to minimize the loss I<sub>DA</sub>, hence increasing the distance between
-D(G<sub>Θ</sub>(I<sub>LR</sub>))and D(I<sub>HR</sub>) . Suppose after the update of the gradient of the discriminator for the few step, the value of prediction becomes D(G<sub>Θ</sub>(I<sub>LR</sub>))=-2   and D(I<sub>HR</sub>) = 2 ,therefore discriminator is learning to know the difference between the LR image and the HR image, hence making the loss(I<sub>DA</sub>)= -4, Here the loss is minimized and the distance between the two predictions is maximized.
+The discriminator wants to minimize the loss l<sub>DA</sub>, hence increasing the distance between
+D(G<sub>Θ</sub>(I<sub>LR</sub>))and D(I<sub>HR</sub>) . Suppose after the update of the gradient of the discriminator for the few step, the value of prediction becomes D(G<sub>Θ</sub>(I<sub>LR</sub>))=-2   and D(I<sub>HR</sub>) = 2 ,therefore discriminator is learning to know the difference between the LR image and the HR image, hence making the loss(l<sub>DA</sub>)= -4, Here the loss is minimized and the distance between the two predictions is maximized.
 
 
 ![discriminator adverserial loss](/images/understanding_disc_adv_loss.png#center)
@@ -118,19 +118,19 @@ D(G<sub>Θ</sub>(I<sub>LR</sub>))and D(I<sub>HR</sub>) . Suppose after the updat
 
 Discriminator is trained for a few steps and then the update of the generator happens. Therefore the discriminator is kept a few steps ahead of the generator in terms of its learning. Let's consider the discriminator has been trained for the few steps and it predicted outputs are:
 
-##### D(G<sub>Θ</sub>(I<sub>LR</sub>)) = -2  
-##### D(I<sub>HR</sub>) = 2 
+_D(G<sub>Θ</sub>(I<sub>LR</sub>)) = -2_
+_D(I<sub>HR</sub>) = 2_ 
 
 The loss of the generator is:
 
-##### _I<sub>GA</sub> = -𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]_
+_l<sub>GA</sub> = -𝔼[D(G<sub>Θ</sub>(I<sub>LR</sub>)]_
 
 Therefore,
-##### I<sub>GA</sub>=  -(-2) = 2 
+_l<sub>GA</sub>=  -(-2) = 2_
 
-Generator wants to minimize I<sub>GA</sub> , which can only we achieved by increasing the value of D(G<sub>Θ</sub>(I<sub>LR</sub>)) hence ultimately reducing the distance between D(G<sub>Θ</sub>(I<sub>LR</sub>)) and D(I<sub>HR</sub>) ,hence making the SR image and HR image identical as:
+Generator wants to minimize l<sub>GA</sub> , which can only we achieved by increasing the value of D(G<sub>Θ</sub>(I<sub>LR</sub>)) hence ultimately reducing the distance between D(G<sub>Θ</sub>(I<sub>LR</sub>)) and D(I<sub>HR</sub>) ,hence making the SR image and HR image identical as:
 
-##### I<sub>GA</sub>= -(large positive value) ≈ global minima
+_l<sub>GA</sub>= -(large positive value) ≈ global minima_
 
 ![generator adverserial loss](/images/understanding_gen_adv_loss.png#center)
 
@@ -143,4 +143,4 @@ Following is the sample output of the 100th epoch.
 The rightmost image is Low-Resolution Patch, the Middle one is the High-Resolution Patch and the Left most one is the Generated High-Resolution Image.
 
 ![outputs](/images/output.png#center)
- 
+
