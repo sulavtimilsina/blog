@@ -41,34 +41,34 @@ icon = "fa fa-2x fa-github"
 weight = 1
 url = "https://github.com/sulavtimilsina"
 
-[[params.social]]
-name = "Gitlab"
-icon = "fa fa-2x fa-gitlab"
-weight = 2
-url = "https://gitlab.com/sulavtimilsina"
+#[[params.social]]
+#name = "Gitlab"
+#icon = "fa fa-2x fa-gitlab"
+#weight = 2
+#url = "https://gitlab.com/sulavtimilsina"
 
 [[params.social]]
 name = "Twitter"
 icon = "fa fa-2x fa-twitter"
-weight = 3
+weight = 2
 url = "https://twitter.com/Durlav98"
 
 [[params.social]]
 name = "LinkedIn"
 icon = "fa fa-2x fa-linkedin"
-weight = 4
+weight = 3
 url = "https://www.linkedin.com/in/sulav-timilsina-715873124/"
 
 [[params.social]]
 name = "Medium"
 icon = "fa fa-2x fa-medium"
-weight = 5
+weight = 4
 url = "https://medium.com/@sulav.timilsina1999"
 
 [[params.social]]
 name = "gmail"
 icon = "fa fa-envelope fa-2x"
-weight = 6
+weight = 5
 url = "mailto:sulav.timilsina1999@gmail.com"
 #rel = "alternate"
 #type = "application/rss+xml"
