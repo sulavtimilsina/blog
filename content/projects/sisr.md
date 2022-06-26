@@ -16,4 +16,4 @@ In this study, we used Wasserstein GAN with Gradient Penalty to train SRGAN, ens
 [Find Code Here](https://github.com/sulavtimilsina/SIngle-Image-Super-Resolution-Using-GMGAN)
 
 ### Other Contributers:
-1. [Milan Gautam](https://gautammilan.github.io/)
+1. [Milan Gautam](https://gautammilan.github.io/)`
