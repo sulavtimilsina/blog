@@ -13,7 +13,7 @@ Bidirectional Encoder Representations from Transformers (BERT) is a transformer-
 Here we are inspired from RoBERTa model which is also based on BERT with 12 encoder layers. It builds on BERT and modifies key hyperparameters, removing the next-sentence pretraining objective and training with much larger mini-batches and learning rates.
 
 Since there were not any language models trained on Nepali language, I tried to train it on data collected from Nepali News Portals.
-I scrapped about 14.5 GB of text data from more than 50 news sites. We trained two models, one with 128 token lengths and the other with 512 token lengths, using cloud TPUs.  This is an active project, so code will be soon be made open source.
+I scrapped about 14.5 GB of text data from more than 36 news sites. We trained two models, one with 128 token lengths and the other with 512 token lengths, using cloud TPUs.  This is an active project, so code will be soon be made open source.
 
 ## Find more about this project here. [Link to Project Site](https://nepberta.github.io)
 
