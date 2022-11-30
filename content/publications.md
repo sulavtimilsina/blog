@@ -7,4 +7,4 @@ slug = ""
 
 ### 2022:
 
-1. Milan Gautam, Sulav Timilsina, Binod Bhattarai (2022). [NepBERTa: Nepali Language Model Trained in a Large Corpus.](https://nepberta.github.io) (Accepted in [AACL-IJCNLP 2022](https://www.aacl2022.org)).
+1. Timilsina, S., Gautam, M., Bhattarai, B., NepBERTa: Nepali Language Model Trained on a Large Corpus,  Asian Chapter of the Association of Computational Linguistics (AACL), 2022. [(pdf)](https://aclanthology.org/2022.aacl-short.34.pdf) [(project page)](https://nepberta.github.io)
